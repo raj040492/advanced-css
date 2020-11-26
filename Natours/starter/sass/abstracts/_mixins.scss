@@ -1,0 +1,94 @@
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin absCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin relCenter {
+  left: 50%;
+  position: relative;
+  transform: translate(-50%);
+}
+
+@mixin hideElement {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@mixin showElement {
+  opacity: 1;
+  visibility: visible;
+}
+
+/*
+Media Query Manager
+  0-600px   : Phone
+  600-900px : Tablet portrait
+  900-1200px: Tablet landscape
+  1200-1800 : Normal styles apply here.
+  1800 +    : Big Screens
+
+@mixin respondPhone {
+  @media (max-width: 600px) {
+    @content;
+  }
+}
+
+Following is a better version of the above mixin.
+Both will give similar results.
+$breakpoint argument choices
+  - phone
+  - tab-port
+  - tab-land
+  - big-desktop
+
+  1em = 16px;
+*/
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == mini-phone {
+    // 380px
+    @media only screen and (max-width: 23.75em) {
+      @content;
+    }
+  }
+  @if $breakpoint == smaller-phone {
+    // 450px
+    @media only screen and (max-width: 28.125em) {
+      @content;
+    }
+  }
+  @if $breakpoint == phone {
+    // 600px
+    @media only screen and (max-width: 37.5em) {
+      @content;
+    }
+  }
+  @if $breakpoint == tab-port {
+    // 900px
+    @media only screen and (max-width: 56.25em) {
+      @content;
+    }
+  }
+  @if $breakpoint == tab-land {
+    //1200px
+    @media only screen and (max-width: 75em) {
+      @content;
+    }
+  }
+  @if $breakpoint == big-desktop {
+    //1800px
+    @media only screen and (min-width: 112.5em) {
+      @content;
+    }
+  }
+}

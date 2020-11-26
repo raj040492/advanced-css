@@ -1,0 +1,12 @@
+@mixin centerUsingFlexBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin popupImageOnHover {
+  &:hover {
+    transform: scale(1.5);
+    border: 0.2rem solid var(--color-primary);
+  }
+}

@@ -8,13 +8,26 @@
   justify-items: center;
   grid-row-gap: 1rem;
 
+  @media only screen and (max-width: $bp-medium) {
+    grid-column: full-start / full-end;
+  }
+
   &__list {
     display: grid;
-    grid-template-columns: repeat(2, max-content);
+    grid-template-columns: min-content max-content;
     grid-template-rows: repeat(3, 1fr);
     grid-column-gap: 2rem;
     grid-row-gap: 5vh;
     align-items: center;
+
+    @media only screen and (max-width: $bp-medium) {
+      grid-template-columns: repeat(3, min-content max-content);
+      grid-template-rows: max-content;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+      grid-template-columns: min-content max-content; // at small screens, we are reverting to original grid style. refer line 17
+    }
   }
 
   &__img {
